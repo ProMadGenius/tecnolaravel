@@ -17,12 +17,16 @@
                 <div class="panel-body">
                     <form action="{{ route('gestionartipousuario.store') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
+
+
                         <div class="form-group">
                             <label class="control-label col-sm-2" >Descripcion</label>
                             <div class="col-sm-10">
                                 <input type="text" name="descripcion" id="descripcion" class="form-control">
                             </div>
                         </div>
+
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <input type="submit" class="btn btn-primary" value="Guardar" />

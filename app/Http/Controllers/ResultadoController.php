@@ -26,5 +26,5 @@ class ResultadoController extends Controller
             ->get();
         return view('gestionarresultado.detail',compact('detalles'));
     }
-    
+
 }

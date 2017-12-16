@@ -30,6 +30,16 @@ class EncuestaController extends Controller
         $encuesta->idfacultad=$request->idfacultad;
         $encuesta->fechainicio=$request->fechainicio;
         $encuesta->fechafin=$request->fechafin;
+        $encuesta->idusuario1=$request->idusuario1;
+        $encuesta->idusuario2=$request->idusuario2;
+        $encuesta->idusuario3=$request->idusuario3;
+        $encuesta->idusuario4=$request->idusuario4;
+        $encuesta->idusuario5=$request->idusuario5;
+        $encuesta->idusuario6=$request->idusuario6;
+        $encuesta->idusuario7=$request->idusuario7;
+        $encuesta->idusuario8=$request->idusuario8;
+        $encuesta->idusuario9=$request->idusuario9;
+        $encuesta->idusuario10=$request->idusuario10;
         $encuesta->save();
         Session::flash('success', 'Encuesta agregado exitosamente');
         return redirect()->route('gestionarencuesta.index');

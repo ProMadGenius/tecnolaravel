@@ -38,4 +38,4 @@ Route::get('/admin/gestionarresultado','ResultadoController@index');
 Route::get('/admin/gestionarresultado/{idencuesta}','ResultadoController@show');
 Route::get('/admin/gestionarresultado/{idencuesta}/{idusuario}','ResultadoController@detalle');
 
-Route::get('/admin/gestionarmiencuesta','MiEncuestaController@index');
+Route::resource('/admin/gestionarmiencuesta','MiEncuestaController');
