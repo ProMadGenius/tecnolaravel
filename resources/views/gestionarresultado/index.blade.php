@@ -20,6 +20,19 @@
 
     </div>
 
+    <form action="/admin/gestionarresultado" method="GET">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="idfacultad" placeholder="Buscar por Facultad ID...">
+
+            
+            <span class="input-group-btn">
+                <button class="btn btn-default-sm" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+
     <table class="table table-hover">
         <tr>
             <th>No</th>
@@ -34,15 +47,20 @@
                 <td class="table-text">
                     {{$encuesta->id}}
                 </td>
+
                 <td class="table-text">
                     {{\App\Facultad::findOrFail($encuesta->idfacultad)->descripcion}}
-                </td><td class="table-text">
+                </td>
+
+                <td class="table-text">
                     {{$encuesta->fechainicio}}
-                </td><td class="table-text">
+                </td>
+
+                <td class="table-text">
                     {{$encuesta->fechafin}}
                 </td>
                 <td>
-                    <a href="{{ url('/admin/gestionarresultado/'.$encuesta->id)}}" class="btn btn-info btn-round">Ver Usuarios</a>
+                    <a href="{{ url('/admin/gestionarresultado/'. $encuesta->id)}}" class="btn btn-info btn-round">Ver Usuarios</a>
                 </td>
             </tr>
         @endforeach

@@ -9,9 +9,29 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        $usuarios = \App\Usuario::orderBy('id','ASC')->paginate(10);
+        //$usuarios = \App\Usuario::orderBy('id','ASC')->paginate(10);
+        //return view('gestionarusuario.index',compact('usuarios'));
+
+
+
+        $search = \Request::get('nombre'); //<-- we use global request to get the param of URI
+        $search2 = \Request::get('email'); //<-- we use global request to get the param of URI
+        $search3 = \Request::get('ci'); //<-- we use global request to get the param of URI
+
+
+
+
+
+        $usuarios = Usuario::where([['name','like','%'.$search.'%'],['email','like','%'.$search2.'%'],['ci','like','%'.$search3.'%']
+        ,])
+            ->orderBy('name')
+            ->paginate(20);
+
         return view('gestionarusuario.index',compact('usuarios'));
     }
+
+
+
 
     public function create()
     {

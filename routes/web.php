@@ -34,7 +34,8 @@ Route::resource('/admin/gestionarusuario','UsuarioController');
 Route::resource('/admin/gestionarencuesta','EncuestaController');
 Route::resource('/admin/gestionarencuesta','EncuestaController');
 
-Route::get('/admin/gestionarresultado','ResultadoController@index');
+Route::resource('/admin/gestionarresultado','ResultadoController');
+
 Route::get('/admin/gestionarresultado/{idencuesta}','ResultadoController@show');
 Route::get('/admin/gestionarresultado/{idencuesta}/{idusuario}','ResultadoController@detalle');
 

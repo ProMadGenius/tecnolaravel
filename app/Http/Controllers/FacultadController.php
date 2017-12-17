@@ -9,7 +9,12 @@ class FacultadController extends Controller
 {
     public function index()
     {
-        $facultads = \App\Facultad::orderBy('id','ASC')->paginate(10);
+        //$facultads = \App\Facultad::orderBy('id','ASC')->paginate(10);
+
+        $search = (\Request::get('descripcion'));
+        $facultads = Facultad::where([['descripcion','like','%'.$search.'%'],])
+            ->orderBy('descripcion')
+            ->paginate(20);
         return view('gestionarfacultad.index',compact('facultads'));
 
     }

@@ -9,7 +9,12 @@ class TipoUsuarioController extends Controller
 {
     public function index()
     {
-        $tipousuarios = \App\TipoUsuario::orderBy('id','ASC')->paginate(10);
+        //$tipousuarios = \App\TipoUsuario::orderBy('id','ASC')->paginate(10);
+
+        $search = ucfirst(\Request::get('descripcion'));
+        $tipousuarios = TipoUsuario::where([['descripcion','like','%'.$search.'%'],])
+            ->orderBy('descripcion')
+            ->paginate(20);
         return view('gestionartipousuario.index',compact('tipousuarios'));
 
     }

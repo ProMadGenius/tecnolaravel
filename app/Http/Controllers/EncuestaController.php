@@ -9,8 +9,20 @@ class EncuestaController extends Controller
 {
     public function index()
     {
+        //$encuestas = \App\Encuesta::orderBy('id','ASC')->paginate(10);
+
+        $search = (\Request::get('idfacultad'));
+        if ($search != NULL){
+            $encuestas = Encuesta::where([['idfacultad','=',$search],])
+                ->orderBy('idfacultad')
+                ->paginate(20);
+            return view('gestionarencuesta.index',compact('encuestas'));
+        }
+
         $encuestas = \App\Encuesta::orderBy('id','ASC')->paginate(10);
         return view('gestionarencuesta.index',compact('encuestas'));
+
+
 
     }
 

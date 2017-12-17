@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modelo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Session;
 
@@ -11,7 +12,15 @@ class ModeloController extends Controller
 {
     public function index()
     {
-        $modelos = \App\Modelo::orderBy('id','ASC')->paginate(10);
+        //$modelos = \App\Modelo::orderBy('id','ASC')->paginate(10);
+        //return view('gestionarmodelo.index',compact('modelos'));
+
+
+        $search = strtoupper(\Request::get('descripcion'));
+        $modelos = Modelo::where([['descripcion','like','%'.$search.'%'],])
+            ->orderBy('descripcion')
+            ->paginate(20);
+
         return view('gestionarmodelo.index',compact('modelos'));
 
     }

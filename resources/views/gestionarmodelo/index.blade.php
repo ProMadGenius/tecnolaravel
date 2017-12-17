@@ -39,6 +39,21 @@
 
     </div>
 
+   <form action="/admin/gestionarmodelo" method="GET">
+       <div class="input-group custom-search-form">
+           <input type="text" class="form-control" name="descripcion" placeholder="Buscar por Descripcion...">
+
+
+
+
+           <span class="input-group-btn">
+                <button class="btn btn-default-sm" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+       </div>
+   </form>
+
     <table class="table table-hover">
         <tr>
             <th>No</th>

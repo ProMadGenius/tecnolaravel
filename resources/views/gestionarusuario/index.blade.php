@@ -15,6 +15,32 @@
             <p class="category">Usuarios de Madurez</p>
         </div>
     </div>
+
+    <div class="col-md-6">
+
+
+        <form action="/admin/gestionarusuario", method="GET">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="nombre" placeholder="Buscar por Nombre...">
+            <input type="text" class="form-control" name="email" placeholder="Buscar por Email...">
+            <input type="text" class="form-control" name="ci" placeholder="Buscar por Ci...">
+
+
+
+            <span class="input-group-btn">
+                <button class="btn btn-default-sm" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        </form>
+
+
+    </div>
+
+
+
+
     <div class="pull-right">
         <a class="btn btn-success" href="{{ route('gestionarusuario.create') }}"> Crear</a>
 
