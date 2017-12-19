@@ -4,6 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Usuario
+ *
+ * @mixin \Eloquent
+ */
 class Usuario extends Model
 {
     protected $table = 'users';

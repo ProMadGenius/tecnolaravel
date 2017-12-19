@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('content')
 
     @if ($message = Session::get('success'))
@@ -15,6 +13,7 @@
             <p class="category">Encuestas de Madurez</p>
         </div>
     </div>
+
     <div class="pull-right">
         <a class="btn btn-success" href="{{ route('gestionarencuesta.create') }}"> Crear</a>
 
@@ -24,7 +23,6 @@
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="idfacultad" placeholder="Buscar por Facultad ID...">
 
-            
             <span class="input-group-btn">
                 <button class="btn btn-default-sm" type="submit">
                     <i class="fa fa-search"></i>

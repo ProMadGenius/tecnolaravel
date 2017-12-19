@@ -14,7 +14,12 @@
             </div>
         </div>
     </div>--}}
+   <div class="card card-plain">
+       <div class="card-header" data-background-color="purple">
+           <h4 class="title">Cantidad de Visitas a Gestion de Modelos: {{ Counter::showAndCount('Modelos') }}</h4>
 
+       </div>
+   </div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

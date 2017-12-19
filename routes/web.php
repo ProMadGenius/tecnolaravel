@@ -32,7 +32,7 @@ Route::resource('/admin/gestionarfacultad','FacultadController');
 Route::resource('/admin/gestionartipousuario','TipoUsuarioController');
 Route::resource('/admin/gestionarusuario','UsuarioController');
 Route::resource('/admin/gestionarencuesta','EncuestaController');
-Route::resource('/admin/gestionarencuesta','EncuestaController');
+Route::resource('/admin/gestionarindicador','IndicadorController');
 
 Route::resource('/admin/gestionarresultado','ResultadoController');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Indicador;
 use Illuminate\Http\Request;
+use Session;
 
 class IndicadorController extends Controller
 {
@@ -14,7 +15,12 @@ class IndicadorController extends Controller
      */
     public function index()
     {
-        //
+        $search = \Request::get('descripcion');
+        $indicadores = Indicador::where([['descripcion','like','%'.$search.'%'],])
+            ->orderBy('descripcion')
+            ->paginate(20);
+
+        return view('gestionarindicador.index',compact('indicadores'));
     }
 
     /**
@@ -24,7 +30,7 @@ class IndicadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('gestionarindicador.create');
     }
 
     /**
@@ -35,7 +41,16 @@ class IndicadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'descripcion' => 'required'
+        ]);
+        $indicador = new Indicador();
+        $indicador->descripcion=$request->descripcion;
+        $indicador->metrica=$request->metrica;
+        $indicador->idmodelo=$request->idmodelo;
+        $indicador->save();
+        Session::flash('success', 'Indicador agregado exitosamente');
+        return redirect()->route('gestionarindicador.index');
     }
 
     /**
@@ -52,34 +67,42 @@ class IndicadorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Indicador  $indicador
+     * @param Indicador $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Indicador $indicador)
+    public function edit($id)
     {
-        //
+        $indicador= Indicador::findOrFail($id);
+        return view('gestionarindicador.edit', ['indicador' => $indicador]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Indicador  $indicador
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Indicador $indicador)
+
+    public function update(Request $request,$id)
     {
-        //
+        request()->validate([
+            'descripcion' => 'required',
+        ]);
+
+        $indicador= Indicador::findOrFail($id);
+        $indicador->descripcion=$request->descripcion;
+        $indicador->update();
+
+        return redirect()->route('gestionarindicador.index')
+            ->with('success','Indicador Actualizado Correctamente');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Indicador  $indicador
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Indicador $indicador)
+    public function destroy($id)
     {
-        //
+        Indicador::findOrFail($id)->delete();
+        return redirect()->route('gestionarindicador.index')
+            ->with('success','Indicador Eliminado Correctamente');
+
     }
 }

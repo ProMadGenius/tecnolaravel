@@ -58,7 +58,14 @@
                     {{$encuesta->fechafin}}
                 </td>
                 <td>
-                    
+
+
+                    <form action="{{ route('gestionarencuesta.destroy',$encuesta->id) }}" method="POST" class="form-horizontal">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <a href="{{ route('gestionarencuesta.edit', $encuesta->id) }}" class="btn btn-info btn-round">Editar</a>
+                        <input type="submit" class="btn btn-danger btn-round" value="Eliminar" />
+                    </form>
                 </td>
             </tr>
         @endforeach

@@ -4,6 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\DetalleEncuestaUsuario
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Usuario[] $usuarios
+ * @mixin \Eloquent
+ */
 class DetalleEncuestaUsuario extends Model
 {
     //
