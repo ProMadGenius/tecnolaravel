@@ -32,6 +32,15 @@ class CreateUsersTable extends Migration
                 ->references('id')->on('facultads')
                 ->onDelete('cascade');
         });
+        $user = new App\User();
+        $user->name='Administrador';
+        $user->email='adm@gmail.com';
+        $user->password=bcrypt('123456');
+        $user->apellido='Terminator';
+        $user->ci=1216456;
+        $user->idtipousuario=1;
+        $user->idfacultad=1;
+        $user->save();
     }
 
     /**

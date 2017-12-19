@@ -79,6 +79,7 @@
                         <li><a href="{{url('/admin/gestionarresultado')}}">Resultados</a></li>
                         <li><a href="{{url('/admin/gestionarreporte')}}">Reportes</a></li>
                         <li><a href="{{url('/admin/gestionarestadistica')}}">Estadistica</a></li>
+                        <li><a href="{{url('/admin/gestionarprivilegio')}}">Gestionar Privilegios</a></li>
                     </ul>
                 </li>
                 @endif

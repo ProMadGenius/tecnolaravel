@@ -39,4 +39,11 @@ Route::resource('/admin/gestionarresultado','ResultadoController');
 Route::get('/admin/gestionarresultado/{idencuesta}','ResultadoController@show');
 Route::get('/admin/gestionarresultado/{idencuesta}/{idusuario}','ResultadoController@detalle');
 
+//Privilegios Route
+Route::get('/admin/gestionarprivilegio','PrivilegioController@index')->name('gestionarprivilegio.index');;
+Route::get('/admin/gestionarprivilegio/{idtipousuario}','PrivilegioController@show')->name('gestionarprivilegio.show');;
+Route::post('/admin/gestionarprivilegio','PrivilegioController@update')->name('gestionarprivilegio.update');
+
+
+
 Route::resource('/admin/gestionarmiencuesta','MiEncuestaController');

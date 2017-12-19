@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TipoUsuario;
 use Illuminate\Http\Request;
-
+use Session;
 class TipoUsuarioController extends Controller
 {
     public function index()
@@ -33,6 +33,21 @@ class TipoUsuarioController extends Controller
         $tipousuario = new TipoUsuario();
         $tipousuario->descripcion=$request->descripcion;
         $tipousuario->save();
+
+        $cdus = \App\CasoDeUso::all();
+        $tipousuarios = \App\TipoUsuario::all();
+            foreach ($cdus as $cdu){
+                $detalle_tipousuario_cdu = new \App\DetalleTipoUsuarioCDU();
+                $detalle_tipousuario_cdu->idtipousuario=$tipousuario->id;
+                $detalle_tipousuario_cdu->idcdu=$cdu->id;
+                $detalle_tipousuario_cdu->habilitado=1;
+                $detalle_tipousuario_cdu->buscar=1;
+                $detalle_tipousuario_cdu->insertar=1;
+                $detalle_tipousuario_cdu->modificar=1;
+                $detalle_tipousuario_cdu->eliminar=1;
+                $detalle_tipousuario_cdu->save();
+            }
+
         Session::flash('success', 'TipoUsuario agregado exitosamente');
         return redirect()->route('gestionartipousuario.index');
     }

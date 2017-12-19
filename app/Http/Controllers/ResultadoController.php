@@ -26,7 +26,6 @@ class ResultadoController extends Controller
     public function show($idencuesta)
     {
         $resultados = DB::select('select * from users where id in (select idusuario from detalle_encuesta_usuarios where idencuesta='.$idencuesta.' group by idusuario)');
-
         return view('gestionarresultado.show',compact('resultados','idencuesta'));
     }
     public function detalle($idencuesta,$idusuario)
