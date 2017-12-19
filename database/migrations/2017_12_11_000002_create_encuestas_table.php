@@ -18,16 +18,16 @@ class CreateEncuestasTable extends Migration
             $table->integer('idfacultad')->unsigned();
             $table->date('fechainicio');
             $table->date('fechafin');
-            $table->integer('idusuario1')->unsigned();
-            $table->integer('idusuario2')->unsigned();
-            $table->integer('idusuario3')->unsigned();
-            $table->integer('idusuario4')->unsigned();
-            $table->integer('idusuario5')->unsigned();
-            $table->integer('idusuario6')->unsigned();
-            $table->integer('idusuario7')->unsigned();
-            $table->integer('idusuario8')->unsigned();
-            $table->integer('idusuario9')->unsigned();
-            $table->integer('idusuario10')->unsigned();
+            $table->integer('idusuario1')->nullable()->unsigned();
+            $table->integer('idusuario2')->nullable()->unsigned();
+            $table->integer('idusuario3')->nullable()->unsigned();
+            $table->integer('idusuario4')->nullable()->unsigned();
+            $table->integer('idusuario5')->nullable()->unsigned();
+            $table->integer('idusuario6')->nullable()->unsigned();
+            $table->integer('idusuario7')->nullable()->unsigned();
+            $table->integer('idusuario8')->nullable()->unsigned();
+            $table->integer('idusuario9')->nullable()->unsigned();
+            $table->integer('idusuario10')->nullable()->unsigned();
             $table->timestamps();
             $table->foreign('idusuario1')
                 ->references('id')->on('users')
