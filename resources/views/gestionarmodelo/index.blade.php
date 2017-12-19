@@ -35,29 +35,27 @@
             <p class="category">Modelos de Madurez</p>
         </div>
     </div>
+   @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                     ->where('idcdu','3')->first()->insertar==1)
     <div class="pull-right">
         <a class="btn btn-success" href="{{ route('gestionarmodelo.create') }}"> Crear</a>
-
        {{-- <button class="btn btn-success btn-round" href="{{ route('gestionarmodelo.create') }}">
             <i class="material-icons" >create</i> Crear
             <div class="ripple-container" ></div></button>--}}
+    </div>@endif
 
-    </div>
-
+   @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                        ->where('idcdu','3')->first()->buscar==1)
    <form action="/admin/gestionarmodelo" method="GET">
        <div class="input-group custom-search-form">
            <input type="text" class="form-control" name="descripcion" placeholder="Buscar por Descripcion...">
-
-
-
-
            <span class="input-group-btn">
                 <button class="btn btn-default-sm" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
             </span>
        </div>
-   </form>
+   </form>@endif
 
     <table class="table table-hover">
         <tr>
@@ -80,8 +78,12 @@
                     <form action="{{ route('gestionarmodelo.destroy',$modelo->id) }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <a href="{{ route('gestionarmodelo.edit', $modelo->id) }}" class="btn btn-info btn-round">Editar</a>
-                        <input type="submit" class="btn btn-danger btn-round" value="Eliminar" />
+                        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                     ->where('idcdu','3')->first()->editar==1)
+                        <a href="{{ route('gestionarmodelo.edit', $modelo->id) }}" class="btn btn-info btn-round">Editar</a>@endif
+                        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                     ->where('idcdu','3')->first()->eliminar==1)
+                            <input type="submit" class="btn btn-danger btn-round" value="Eliminar" />@endif
                     {{--<a href="{{ route('gestionarmodelo.destroy', $modelo->id) }}" class="btn btn-danger btn-round" onclick="return confirm('Esta seguro que quiere eliminar?')">Eliminar</a>--}}
                     </form>
                 </td>

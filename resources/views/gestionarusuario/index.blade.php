@@ -24,7 +24,8 @@
 
     <div class="col-md-6">
 
-
+        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                                ->where('idcdu','1')->first()->buscar==1)
         <form action="/admin/gestionarusuario", method="GET">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="nombre" placeholder="Buscar por Nombre...">
@@ -40,6 +41,7 @@
             </span>
         </div>
         </form>
+            @endif
 
 
     </div>
@@ -47,10 +49,12 @@
 
 
 
+    @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                        ->where('idcdu','1')->first()->insertar==1)
     <div class="pull-right">
         <a class="btn btn-success" href="{{ route('gestionarusuario.create') }}"> Crear</a>
-
     </div>
+    @endif
 
     <table class="table table-hover">
         <tr>
@@ -93,8 +97,15 @@
                           class="form-horizontal">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
+                        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                        ->where('idcdu','1')->first()->editar==1)
                         <a href="{{ route('gestionarusuario.edit', $usuario->id) }}" class="btn btn-info btn-round">Editar</a>
+                        @endif
+
+                        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                        ->where('idcdu','1')->first()->eliminar==1)
                         <input type="submit" class="btn btn-danger btn-round" value="Eliminar"/>
+                            @endif
                     </form>
                 </td>
             </tr>

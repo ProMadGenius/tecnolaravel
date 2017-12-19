@@ -9,14 +9,9 @@
 
     <div class="card card-plain">
         <div class="card-header" data-background-color="blue">
-            <h4 class="title">Gestionar Encuestas</h4>
+            <h4 class="title">Resultados</h4>
             <p class="category">Encuestas de Madurez</p>
         </div>
-    </div>
-
-    <div class="pull-right">
-        <a class="btn btn-success" href="{{ route('gestionarencuesta.create') }}"> Crear</a>
-
     </div>
 
     <form action="/admin/gestionarresultado" method="GET">
