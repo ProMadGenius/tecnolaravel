@@ -56,12 +56,14 @@ class CreateCasoDeUsosTable extends Migration
         $cdu->save();
 
         $cdu = new \App\CasoDeUso();
-        $cdu->descripcion='misestadisticas';
+        $cdu->descripcion='privilegios';
         $cdu->save();
 
         $cdu = new \App\CasoDeUso();
-        $cdu->descripcion='privilegios';
+        $cdu->descripcion='misEncuestas';
         $cdu->save();
+
+
     }
 
     /**

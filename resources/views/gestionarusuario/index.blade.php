@@ -5,7 +5,6 @@
     <div class="card card-plain">
         <div class="card-header" data-background-color="red">
             <h4 class="title">Cantidad de Visitas a Gestion de Usuarios: {{ Counter::showAndCount('Usuarios') }}</h4>
-
         </div>
     </div>
 

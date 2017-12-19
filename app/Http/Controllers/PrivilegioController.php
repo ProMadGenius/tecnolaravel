@@ -26,31 +26,6 @@ class PrivilegioController extends Controller
 
     public function update(Request $request)
     {
-       // return $request->get("gestionar_usuario")["activo"];
-
-        //return count($request->all());
-
-        /*foreach ($request->all() as $clave => $valor) {
-            //echo "Clave: $clave; Valor: $valor<br />\n";
-            //echo $clave;
-        } */
-        /*foreach ($request->all() as $r) {
-            return $r->all();
-            //echo "Clave: $clave; Valor: $valor<br />\n";
-            //echo $clave;
-        }*/
-
-
-        //$d_tu_cdu = \App\DetalleTipoUsuarioCDU::findOrFail($request->get("gestionar_usuario")["activo"]);
-
-        //return json_decode($request);
-        /*foreach ($request as $r){
-            echo json_decode($r,true);
-        }*/
-        //d_tu_cdu= \App\DetalleTipoUsuarioCDU::findOrFail($request->get("1")["habilitado"]);
-        /*$d_tu_cdu= \App\DetalleTipoUsuarioCDU::where('idtipousuario','=',$request->get("idtipousuario"))
-        ->where('idcdu','1')->first();
-        return $d_tu_cdu;*/
 
         for( $i=1;$i<12;$i++){
             $d_tu_cdu= \App\DetalleTipoUsuarioCDU::where('idtipousuario','=',$request->get("idtipousuario"))
@@ -61,15 +36,9 @@ class PrivilegioController extends Controller
             $d_tu_cdu->modificar=$request->get($i)["modificar"];
             $d_tu_cdu->eliminar=$request->get($i)["eliminar"];
             $d_tu_cdu->update();
-            //return $d_tu_cdu;
+
 
         }
-        //return $d_tu_cdu;
-
-       // return $this->index();
-
-       /* $tipousuarios = \App\TipoUsuario::orderBy('id','ASC')->paginate(10);
-        return view('gestionarprivilegio.index',compact('tipousuarios'));*/
 
         return redirect()->route('gestionarprivilegio.index')
             ->with('success','Privilegios Actualizados Correctamente');

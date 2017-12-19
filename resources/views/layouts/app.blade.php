@@ -59,39 +59,40 @@
                     $contador->cantidad=$contador->cantidad+1;
                     $contador->update();
                 echo $contador->cantidad;
+               // \App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario) = \App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario);
             ?>
              </h3>
-            
+
         </div>
+
+
         <div class="sidebar-wrapper">
             <ul class="nav">
 
-                @if(Auth::user()->idtipousuario==1)
                 <li class="dropdown active">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{url('/admin/gestionarusuario')}}">Gestionar Usuarios</a></li>
-                        <li><a href="{{url('/admin/gestionarindicador')}}">Gestionar Indicadores</a></li>
-                        <li><a href="{{url('/admin/gestionarmodelo')}}">Gestionar Modelo</a></li>
-                        <li><a href="{{url('/admin/gestionarfacultad')}}">Gestionar Facultad</a></li>
-                        <li><a href="{{url('/admin/gestionartipousuario')}}">Gestionar Tipo Usuario</a></li>
-                        <li><a href="{{url('/admin/gestionarencuesta')}}">Gestionar Encuesta</a></li>
-                        <li><a href="{{url('/admin/gestionarresultado')}}">Resultados</a></li>
-                        <li><a href="{{url('/admin/gestionarreporte')}}">Reportes</a></li>
-                        <li><a href="{{url('/admin/gestionarestadistica')}}">Estadistica</a></li>
-                        <li><a href="{{url('/admin/gestionarprivilegio')}}">Gestionar Privilegios</a></li>
+
+
+                        @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)
+                        ->where('idcdu','1')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarusuario')}}">Gestionar Usuarios</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','2')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarindicador')}}">Gestionar Indicadores</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','3')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarmodelo')}}">Gestionar Modelo</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','4')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarfacultad')}}">Gestionar Facultad</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','5')->first()->habilitado==1)<li><a href="{{url('/admin/gestionartipousuario')}}">Gestionar Tipo Usuario</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','6')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarencuesta')}}">Gestionar Encuesta</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','7')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarresultado')}}">Resultados</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','8')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarreporte')}}">Reportes</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','9')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarestadistica')}}">Estadistica</a></li>@endif
+                            @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','10')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarprivilegio')}}">Gestionar Privilegios</a></li>@endif
                     </ul>
                 </li>
-                @endif
-
-                @if(Auth::user()->idtipousuario==2)
-                <li class="active">
+                @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','11')->first()->habilitado==1)<li class="active">
                     <a href="{{url('/admin/gestionarmiencuesta')}}">
                         <i class="material-icons">poll</i>
                         <p>Mis Encuestas</p>
                     </a>
-                </li>
-                    @endif
+                </li>@endif
 
             </ul>
         </div>
