@@ -103,7 +103,7 @@
         </tbody>
 
     </table>
-        
+
         {{--<input type="checkbox" name="gestionar usuario[activo]" value="1" />activo
         <input type="checkbox" name="gestionar usuario[insertar]" value="1" />insertar
         <input type="checkbox" name="gestionar usuario[eliminar]" value="0" />eliminar
