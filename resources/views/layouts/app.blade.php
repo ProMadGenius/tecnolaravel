@@ -27,6 +27,7 @@
     <!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/material-kit.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     {{--<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>--}}
     {{--<script type="text/javascript">
         $(document).ready(function () {
@@ -38,6 +39,8 @@
     </script>--}}
     {{--End--}}
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+
     </script>--}}
 </head>
 
@@ -50,10 +53,17 @@
 
     Tip 2: you can also add an image using data-image tag
 -->
-        <div class="logo">
+        <div class="logo" id="logango">
             <a href="#" class="simple-text">
                 Grupo 06 SA
             </a>
+
+            <a class="btn btn-primary btn-md" href='javascript:;' onclick="tema1();" role="button">Theme #1</a>
+            <br>
+            <a class="btn btn-danger btn-md" href='javascript:;' onclick="tema2();" role="button">Theme #2</a>
+            <br>
+            <a class="btn btn-default btn-md" href='javascript:;' onclick="tema3();" role="button">Theme #3</a>
+
             <h3>Cantidad Vistas
             <?php $contador = \App\Contador::findOrFail(1) ;
                     $contador->cantidad=$contador->cantidad+1;
@@ -66,11 +76,11 @@
         </div>
 
 
-        <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper" id="abajito">
             <ul class="nav">
 
-                <li class="dropdown active">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion <span class="caret"></span></a>
+                <li class="dropdown active" >
+                    <a class="dropdown-toggle" id="titulo1" data-toggle="dropdown" href="#">Administracion <span class="caret"></span></a>
                     <ul class="dropdown-menu">
 
 
@@ -87,10 +97,11 @@
                             @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','10')->first()->habilitado==1)<li><a href="{{url('/admin/gestionarprivilegio')}}">Gestionar Privilegios</a></li>@endif
                     </ul>
                 </li>
-                @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','11')->first()->habilitado==1)<li class="active">
-                    <a href="{{url('/admin/gestionarmiencuesta')}}">
-                        <i class="material-icons">poll</i>
-                        <p>Mis Encuestas</p>
+                @if(\App\DetalleTipoUsuarioCDU::where('idtipousuario','=',Auth::user()->idtipousuario)->where('idcdu','11')->first()->habilitado==1)
+                    <li class="active" >
+                    <a href="{{url('/admin/gestionarmiencuesta')}}" id="titulo2">
+                        <i class="material-icons" >poll</i>
+                        <p >Mis Encuestas</p>
                     </a>
                 </li>@endif
 
@@ -98,7 +109,7 @@
         </div>
     </div>
     <div class="main-panel">
-        <nav class="navbar navbar-transparent navbar-absolute">
+        <nav class="navbar navbar-transparent navbar-absolute" id="izzy">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -148,7 +159,7 @@
                 </div>
             </div>
         </nav>
-        <div class="content">
+        <div class="content" id="contenidop">
             @yield('content')
         </div>
     </div>
